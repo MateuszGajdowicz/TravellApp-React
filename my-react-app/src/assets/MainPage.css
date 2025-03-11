@@ -11,7 +11,7 @@ body{
 nav{
     display: flex;
     background-color: hsl(125, 75%, 74%);
-    width: 95%;
+    width: 100%;
     z-index: 999;
     justify-content: end;
     
@@ -38,35 +38,51 @@ nav{
 
 }
 .CloseTravels{
-    background-color: hsl(33, 74%, 72%);
     height: 60%;
-    width: 25%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    left: 30%;
+    left: 20%;
     top:20%;
     transform: translateX(-50%);
-    border: 5px solid white;
     border-radius: 10px;
     position: absolute;
 }
 .CloseTravelContainer{
     height: 100%;
     width: 100%;
-    background-color: hsl(33, 70%, 55%);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     font-size: 0.8em;
     border-radius: 10px;
+    align-items: center;
+    gap:20px;
     .Travels{
         padding-left: 10px;
-        min-height: 33%;
-        border-bottom: 2px black solid;
+        width: 90%;
+        height: 28%;
+        background-color: hsl(33, 70%, 55%);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), 
+        -5px -5px 10px rgba(0, 0, 0, 0.2),
+        5px -5px 10px rgba(0, 0, 0, 0.2), 
+        -5px 5px 10px rgba(0, 0, 0, 0.2);
         display: flex;
         flex-direction: column;
         cursor: pointer;
+        position: relative;
+        border-radius: 10px;
+        h1{
+            position: absolute;
+            top:0;
+        }
+        h2{
+            position: absolute;
+            bottom: 0;
+        }
         
     }
     .Travels:hover{
@@ -74,6 +90,42 @@ nav{
 
     }
 
-
-
 }
+.ImageContainer{
+    height: 75%;
+    width: 22%;
+    position: absolute;
+    top: 15%;
+    right: 3%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    align-items: center;
+
+    .Landscape{
+        height: 33%;
+        width: 90%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: yellow;
+        background-size: cover;
+        flex-shrink: 0;
+        border-radius: 20px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), 
+        -5px -5px 10px rgba(0, 0, 0, 0.2),
+        5px -5px 10px rgba(0, 0, 0, 0.2), 
+        -5px 5px 10px rgba(0, 0, 0, 0.2);
+        transition: 0.3s ease;
+
+
+    }
+    .Landscape:hover{
+        width: 95%;
+        height: 38%;
+
+    }
+}
+.ImageContainer::-webkit-scrollbar {
+    display: none;  /* Ukrywa pasek przewijania */
+    }
