@@ -127,5 +127,11 @@ nav{
     }
 }
 .ImageContainer::-webkit-scrollbar {
-    display: none;  /* Ukrywa pasek przewijania */
+    display: none;  
     }
+#Plane{
+    height: 100vh;
+    position: absolute;
+    left: 0%;
+    z-index: -100;
+}

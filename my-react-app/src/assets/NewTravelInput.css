@@ -1,0 +1,38 @@
+
+.NewTravelContainer{
+    background-color:  hsl(60, 56%, 81%) ;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    form{
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+        input{
+            width: 20%;
+            margin-bottom: 10px;
+
+        }
+        .dates{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 30px;
+            gap: 20px;
+            input{
+                width: 5%;
+            }
+        }
+        .InputTrip{
+            display: flex;
+            gap: 10px;
+            position: relative;
+
+
+        }
+
+    }
+}
+button{
+    width: 7%;
+}

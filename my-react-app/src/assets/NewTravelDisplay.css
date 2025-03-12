@@ -1,0 +1,8 @@
+.TravelDisplayContainer{
+    position: absolute;
+    height: 500px;
+    width: 600px;
+    background-color: red;
+    top: 10%;
+    right: 10%;
+}
