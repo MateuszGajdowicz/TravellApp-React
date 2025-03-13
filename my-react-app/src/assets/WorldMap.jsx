@@ -41,7 +41,7 @@ function WorldMap({getImage}){
                 <div style={{display:"flex", gap:"30px", alignItems:"center"}}>
                 <h3>Byłeś już w...</h3>
                 <input id = "CityInput"type="text" placeholder='Gdzie już byłeś?' />
-                <button onClick={handleCityAdd}>Submit</button>
+                <button id="SubmitButton"style={{zIndex:"0"}} onClick={handleCityAdd}>Submit</button>
                 </div>
 
 

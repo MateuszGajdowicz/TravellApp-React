@@ -11,6 +11,7 @@
         input{
             width: 20%;
             margin-bottom: 10px;
+            z-index: 9999;
 
         }
         .dates{
@@ -35,4 +36,14 @@
 }
 button{
     width: 7%;
+    z-index: 9999;
+}
+#Plane1{
+    position: absolute;
+    width: 60%;
+    z-index: 0;
+}
+button{
+    border-radius: 20px;
+    padding: 5px;
 }

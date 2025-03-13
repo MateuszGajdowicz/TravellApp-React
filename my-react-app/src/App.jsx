@@ -6,12 +6,16 @@ import MainPage from './assets/MainPage.jsx'
 import WorldMap from './assets/WorldMap.jsx'
 import NewTravelInput from './assets/NewTravelInput.jsx'
 function App() {
+  const [travelData,setTravelData] = useState();
+  const [isFormDisplayed, setIsFormDisplayed] = useState(false)
+
 
 
   return (
     <>
-    <MainPage/>
-    <NewTravelInput/>
+    <MainPage  setIsFormDisplayed = {setIsFormDisplayed} travelData={travelData}/>
+    {isFormDisplayed && 
+    <NewTravelInput setIsFormDisplayed={setIsFormDisplayed} setTravelData={setTravelData}/>}
 
     </>
   )

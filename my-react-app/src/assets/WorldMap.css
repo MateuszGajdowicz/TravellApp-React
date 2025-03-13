@@ -25,7 +25,9 @@ input{
     height: 30px;
     border-radius: 10px;
 }
-button{
+#SubmitButton{
     height: 30px;
     border-radius: 10px; 
+    width: 100px;
+    
 }

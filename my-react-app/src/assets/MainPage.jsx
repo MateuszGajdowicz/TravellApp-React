@@ -7,7 +7,7 @@ import Plane from './images/plane.png'
 import './MainPage.css'
 import { use } from 'react';
 import WorldMap from './WorldMap.jsx';
-function MainPage(){
+function MainPage({travelData, setIsFormDisplayed}){
     const API_Key = "BS9RzGusHHUDf9ccCSYWhUS-o6pUk1qBct0bczqdjEw";
     const [destinationList, setDestinationList] = useState(["Maroko", "Barcelona", "Moskwa"]);
     const [imageList, setImageList] = useState([NewYork,Warsaw,Barcelona]);
@@ -44,8 +44,8 @@ function MainPage(){
             <ul>
                 <li id="logo">LOGO</li>
                 <li>Strona Główna</li>
-                <li>Moje podróże</li>
-                <li>Dodaj nową podróż</li>
+                <li onClick={()=>console.log(travelData)}>Moje podróże</li>
+                <li onClick={()=>setIsFormDisplayed(true)}>Dodaj nową podróż</li>
                 <li>Profil</li>
             </ul>
         </nav>
