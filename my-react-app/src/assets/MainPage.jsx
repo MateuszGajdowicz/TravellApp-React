@@ -7,7 +7,7 @@ import Plane from './images/plane.png'
 import './MainPage.css'
 import { use } from 'react';
 import WorldMap from './WorldMap.jsx';
-function MainPage({travelData, setIsFormDisplayed}){
+function MainPage({travelData, setIsFormDisplayed,setIsMytravelsDisplayed}){
     const API_Key = "BS9RzGusHHUDf9ccCSYWhUS-o6pUk1qBct0bczqdjEw";
     const [destinationList, setDestinationList] = useState(["Maroko", "Barcelona", "Moskwa"]);
     const [imageList, setImageList] = useState([NewYork,Warsaw,Barcelona]);
@@ -43,8 +43,8 @@ function MainPage({travelData, setIsFormDisplayed}){
         <nav>
             <ul>
                 <li id="logo">LOGO</li>
-                <li>Strona Główna</li>
-                <li onClick={()=>console.log(travelData)}>Moje podróże</li>
+                <li onClick={()=>{setIsMytravelsDisplayed(false),setIsFormDisplayed(false)}}>Strona Główna</li>
+                <li onClick={()=>setIsMytravelsDisplayed(true)}>Moje podróże</li>
                 <li onClick={()=>setIsFormDisplayed(true)}>Dodaj nową podróż</li>
                 <li>Profil</li>
             </ul>
@@ -54,10 +54,10 @@ function MainPage({travelData, setIsFormDisplayed}){
         <div className='CloseTravels'>
             <h2>Twoje najbliższe podróże</h2>
             <div className='CloseTravelContainer'> 
-                {travelList.map((element, index)=>
+                {travelData.map((element, index)=>
                 <div className='Travels' key={index}>
-                    <h1>{element.destination}</h1>
-                    <h2>{element.begining} - {element.ending}</h2>
+                    <h1>{element.Destination.join(", ")}</h1>
+                    <h2>{element.StartDate} - {element.EndDate}</h2>
                 </div>
                 )}
             </div>

@@ -31,7 +31,9 @@ function WorldMap({getImage}){
         let CityInput = document.getElementById("CityInput").value;
         getCityCoordinates(CityInput);
         document.getElementById("CityInput").value ="";
-        getImage(CityInput)
+        getImage(CityInput);
+        
+        
 
     
     }

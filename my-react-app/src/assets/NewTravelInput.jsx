@@ -31,15 +31,15 @@ function NewTravelInput({setTravelData, setIsFormDisplayed}){
         {   
             let DestinationValue = document.getElementById(`destinationInput${index}`).value;
             if(DestinationValue!==""){
+                
                 setDestinationvalue(prev=>[...prev,DestinationValue]);
 
             }
 
 
         })
-        const StartDate = (new Date(startDateValue).toLocaleDateString("pl-PL"));
-        const EndDate = (new Date(endDateValue).toLocaleDateString("pl-PL"))
-        setTravelPeriod(`${StartDate} - ${EndDate}`);
+
+        setTravelPeriod(`${startDateValue} - ${endDateValue}`);
 
         if(accomodationValue!==""){
             setAccomodation(accomodationValue);
@@ -60,26 +60,27 @@ function NewTravelInput({setTravelData, setIsFormDisplayed}){
 
         })
         setIsDisplayed(true);
-        SendTravelData();
         
 
 
     }
     function SendTravelData(){
-        setTravelData({
+        setTravelData(prev=>[...prev, {
             Destination: destinationValue,
             StartDate:startDateValue,
             EndDate:endDateValue,
             Budget: budget,
             Attractions: attractions,
+        
 
-        })
+        }]);
     }
         
     
 
     return(
         <div className='NewTravelContainer'>
+        <h1 className='close' onClick={()=>setIsFormDisplayed(false)}>X</h1>
         <img id = "Plane1"src={Plane} alt="" />
             
             <form action="">
