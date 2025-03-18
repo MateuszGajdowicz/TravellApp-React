@@ -1,10 +1,14 @@
-import { use, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import './NewTravelInput.css'
 import NewTravelDisplay from './NewTravelDisplay.jsx';
 import MainPage from './MainPage.jsx';
 import Plane from './images/plane.png'
 
 function NewTravelInput({setTravelData, setIsFormDisplayed}){
+    function LoadFromLocalStorage(key,defaultValue){
+        const StoredData = localStorage.getItem(key);
+        return StoredData? JSON.parse(StoredData):defaultValue;
+    }
 
     const [places, setPlaces] = useState([1])
     function handleAddPlace(){
@@ -15,7 +19,7 @@ function NewTravelInput({setTravelData, setIsFormDisplayed}){
     function handleAtrakcjeadd(){
         setAtrakcje(prev=>[...prev, prev[prev.length-1]+1]);
     }
-    const [destinationValue, setDestinationvalue] =  useState([])
+    const [destinationValue, setDestinationvalue] =  useState(() => LoadFromLocalStorage("destinationValue", []))
     const [startDateValue, setStartDateValue] = useState([]);
     const [endDateValue, setEndDatevalue] = useState();
     const [travelPeriod, setTravelPeriod] = useState();
@@ -25,6 +29,11 @@ function NewTravelInput({setTravelData, setIsFormDisplayed}){
     const [budget, setBudget] =useState()
     const [attractions, setAttractions] = useState([]);
     const [isDisplayed, setIsDisplayed] = useState(false);
+
+    useEffect(()=>{
+        localStorage.setItem("destinationValue", JSON.stringify(destinationValue));
+    }, [destinationValue]);
+    
     function getTravelInfo(){
         setDestinationvalue([]);
         places.forEach((element, index)=>
@@ -75,7 +84,11 @@ function NewTravelInput({setTravelData, setIsFormDisplayed}){
 
         }]);
     }
-        
+    const [InputValue, setInputvalue] = useState();
+    function getInputValue(event){
+        setInputvalue(event.target.value)
+
+    }
     
 
     return(
@@ -90,7 +103,7 @@ function NewTravelInput({setTravelData, setIsFormDisplayed}){
             {places.map((element, index)=>
                 <div key={index} className='InputTrip' >
                     <h3 >{element}</h3>
-                    <input id ={`destinationInput${index}`} type="text" placeholder='Miejsce, które chciałbyś odwiedzić' />
+                    <input id ={`destinationInput${index}`} type="text" placeholder='Miejsce, które chciałbyś odwiedzić' onChange={getInputValue}/>
                 
                 </div>
 
@@ -123,7 +136,7 @@ function NewTravelInput({setTravelData, setIsFormDisplayed}){
                 <button onClick={getTravelInfo} type='button' style={{marginBottom:"100px"}}>Potwierdź</button>
             </form>
             {isDisplayed &&
-        <NewTravelDisplay SendTravelData={SendTravelData} setIsFormDisplayed={setIsFormDisplayed} attractions={attractions} budget = {budget} accomodation = {accomodation} destinationValue={destinationValue} travelPeriod = {travelPeriod}/>}\
+        <NewTravelDisplay InputValue ={InputValue} SendTravelData={SendTravelData} setIsFormDisplayed={setIsFormDisplayed} attractions={attractions} budget = {budget} accomodation = {accomodation} destinationValue={destinationValue} travelPeriod = {travelPeriod}/>}\
         </div>
     );
 }

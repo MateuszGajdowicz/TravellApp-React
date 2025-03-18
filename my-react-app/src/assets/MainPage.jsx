@@ -44,8 +44,8 @@ function MainPage({travelData, setIsFormDisplayed,setIsMytravelsDisplayed}){
             <ul>
                 <li id="logo">LOGO</li>
                 <li onClick={()=>{setIsMytravelsDisplayed(false),setIsFormDisplayed(false)}}>Strona Główna</li>
-                <li onClick={()=>setIsMytravelsDisplayed(true)}>Moje podróże</li>
-                <li onClick={()=>setIsFormDisplayed(true)}>Dodaj nową podróż</li>
+                <li onClick={()=>{setIsMytravelsDisplayed(true),setIsFormDisplayed(false)}}>Moje podróże</li>
+                <li onClick={()=>{setIsFormDisplayed(true),setIsMytravelsDisplayed(false)}}>Dodaj nową podróż</li>
                 <li>Profil</li>
             </ul>
         </nav>

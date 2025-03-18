@@ -27,7 +27,7 @@ function MyTravels({travelData,setIsMytravelsDisplayed}){
                 <div className='MyTravelsSmallContainer'>
                     {FilteredTravelData.map((element)=>(
                     <div onClick={()=>setSelectedItem(element)} className='Travels'>
-                        <h3>{element.Destination}</h3>
+                        <h3>{element.Destination.join(", ")}</h3>
                         <h4>{`${element.StartDate}- ${element.EndDate}`}</h4>
                                             
                     </div>
@@ -38,7 +38,7 @@ function MyTravels({travelData,setIsMytravelsDisplayed}){
 
             </div>
             <div className='CurrentTravelContainer'>
-                <h1>Podsumowanie twojej podróży do {SelectedItem?.Destination}</h1>
+                <h1>Podsumowanie twojej podróży do {SelectedItem?.Destination.join(", ")}</h1>
                 <h3>Zwiedziłeś {SelectedItem?.Attractions}</h3>
                 <h3>
                 Podróż zajęła ci{" "}
@@ -49,8 +49,9 @@ function MyTravels({travelData,setIsMytravelsDisplayed}){
                 ) + " dni"
                     : "Nieznana długość"}
                 </h3>
-                <h3>Na podróż wydałeś...</h3>
+                <h3>Na podróż wydałeś {SelectedItem?.Budget}</h3>
                 <h4>Co chcesz dodać?...</h4>
+                <textarea id = "ThoughtsInput" type="text" placeholder='Dodaj swoje przemyślenia' ></textarea>
                 <h3>Zdjęcia z podróży...</h3>
                 <input type="file" onChange={handleImageAdd} />
                 <div className='ImageContainerTravel'>

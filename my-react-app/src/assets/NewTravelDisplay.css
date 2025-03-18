@@ -1,6 +1,6 @@
 .TravelDisplayContainer{
     position: absolute;
-    height: auto;
+    height: 120%;
     width: 600px;
     top: 10%;
     right: 10%;
@@ -18,4 +18,19 @@
     right: 5%;
     height: 50px;
     width: auto;
+}
+.WeatherContainer{
+    height: 50%;
+    width: 90%;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+}
+.Weather{
+    background-color: orange;
+    width: 50%;
+    height: 40%;
 }
