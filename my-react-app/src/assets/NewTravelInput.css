@@ -41,7 +41,7 @@ button{
 #Plane1{
     position: absolute;
     width: 60%;
-    z-index: 0;
+    z-index: -10;
 }
 button{
     border-radius: 20px;

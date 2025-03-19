@@ -1,6 +1,6 @@
 .TravelDisplayContainer{
     position: absolute;
-    height: 120%;
+    height: auto;
     width: 600px;
     top: 10%;
     right: 10%;
@@ -20,17 +20,31 @@
     width: auto;
 }
 .WeatherContainer{
-    height: 50%;
+    height: auto;
     width: 90%;
-    background-color: red;
     display: flex;
     flex-direction: row;
+    gap:10px;
     flex-wrap: wrap;
+    justify-content: center;
+    
 
 
 }
 .Weather{
     background-color: orange;
-    width: 50%;
-    height: 40%;
+    width: 40%;
+    height: auto;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), 
+    -5px -5px 10px rgba(0, 0, 0, 0.2),
+    5px -5px 10px rgba(0, 0, 0, 0.2), 
+    -5px 5px 10px rgba(0, 0, 0, 0.2); 
+
+}
+.SomeButton{
+    height: 30px;
+    width: auto;
+    margin-bottom: 20px;
 }

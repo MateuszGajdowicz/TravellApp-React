@@ -1,17 +1,25 @@
 import {useState} from 'react';
 import './NewTravelDisplay.css'
 import NewTravelInput from './NewTravelInput.jsx';
-function NewTravelDisplay({InputValue,SendTravelData,setIsFormDisplayed, destinationValue, travelPeriod, accomodation, budget, attractions}){
+function NewTravelDisplay({SendTravelData,setIsFormDisplayed, destinationValue, travelPeriod, accomodation, budget, attractions}){
     const API_KEY = "65742fc4055098afe646d0f550e67fa7";
     const API_URL="https://api.openweathermap.org/data/2.5/weather";
     
-    const [data, setData] = useState();
-    async function GetWeather(city){
+    const [data, setData] = useState([]);
+    async function GetWeather(){
         try{
-            const response = await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric&lang=pl`);
-            const result = await response.json();
-            setData(result);
-            console.log(result);
+            const weatherResults=[];
+            for(let i =0; i<destinationValue.length; i++){
+                const response = await fetch(`${API_URL}?q=${destinationValue[i]}&appid=${API_KEY}&units=metric&lang=pl`);
+                const result = await response.json();
+                weatherResults.push(result)
+
+
+            }
+
+            setData(weatherResults);
+
+
         }
         catch(error){
 
@@ -41,19 +49,20 @@ function NewTravelDisplay({InputValue,SendTravelData,setIsFormDisplayed, destina
                     <li key={index}>{element}</li>
                 )}
             </ul>
-            <button onClick={()=>GetWeather(InputValue)}>Sprawdź pogodę</button>
-            {data &&
+            <button className=" SomeButton"onClick={()=>GetWeather()}>Sprawdź pogodę</button>
             <div className='WeatherContainer'>
-                <div className="Weather">
-                    <h3>{data.name}</h3>
-                    <h3>Temperatura:{data.main.temp} C</h3>
-                    <h3>{data.weather.description}</h3>
+                {data.map((element)=>
+                    <div className='Weather'>
+                        <h2>{element.name}</h2>
+                        <h3>Temperatura : {element.main.temp}°C</h3>
+                        <h3>{element.weather[0].description}</h3>
 
-                </div>
 
-                
+                    </div>)
+            }
+            </div>
 
-            </div>}
+
 
 
         </div>
