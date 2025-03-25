@@ -14,6 +14,7 @@ function NewTravelDisplay({SendTravelData,setIsFormDisplayed, destinationValue, 
                 const result = await response.json();
                 weatherResults.push(result)
 
+                
 
             }
 

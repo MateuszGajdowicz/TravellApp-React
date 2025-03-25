@@ -7,6 +7,7 @@ import WorldMap from './assets/WorldMap.jsx'
 import NewTravelInput from './assets/NewTravelInput.jsx'
 import MyTravels from './assets/MyTravels.jsx'
 import AttractionReccomend from './assets/AttractionReccomend.jsx'
+import Kantor from './assets/Kantor.jsx'
 function App() {
   const [travelData,setTravelData] = useState([]);
   const [isFormDisplayed, setIsFormDisplayed] = useState(false)
@@ -21,6 +22,8 @@ function App() {
     <NewTravelInput setIsFormDisplayed={setIsFormDisplayed} setTravelData={setTravelData}/>}
     {isMyTravelsDisplayed &&
     <MyTravels travelData={travelData} setIsMytravelsDisplayed={setIsMytravelsDisplayed}/>}
+    <Kantor/>
+
     </>
   )
 }

@@ -4,6 +4,8 @@ function AttractionReccomend({destinationValue}){
     const [attractions, setAttractions] = useState([]);
     const [cityName, setCityName] = useState();
     const [coordinates, setCoordinates] = useState();
+    const [loadingMessage, setLoadingMessage] = useState("");
+    const [placeValue, setPlaceValue] = useState();
 
 
     async function getCityCoordinates(cityName){
@@ -23,11 +25,20 @@ function AttractionReccomend({destinationValue}){
 
     }
     async function getAttractions(){
-        getCityCoordinates(destinationValue[0]);
+        
+        setLoadingMessage("Loading...");
+        await getCityCoordinates(placeValue);
         try{
             const response = await fetch (`https://api.geoapify.com/v2/places?categories=tourism.attraction&filter=circle:${coordinates.lon},${coordinates.lat},20000&limit=20&apiKey=0e0f80a82b4149bc8ac7c96e7cf02aa5`)
             const result =await response.json();
             console.log(result)
+            if(result.features ===0){
+                setLoadingMessage("Nie znaleziono atrakcji dla tego miejsca")
+
+            }
+            else if(result.features!==0){
+                setLoadingMessage("")
+            }
             setAttractions(result.features);
 
         }
@@ -37,8 +48,10 @@ function AttractionReccomend({destinationValue}){
     }
     return(
         <div className="ReccomendationContainer">
-            <h1>Sugerowane atrakcje w {destinationValue[0]}</h1>
+            <h1>Sugerowane atrakcje w {placeValue}</h1>
+            <input type="text" placeholder="Wprowadź miejsce" onChange={(e)=>setPlaceValue(e.target.value)}/>
             <button id="checkButton"onClick={()=>getAttractions()}>Sprawdź</button>
+            <p>{loadingMessage}</p>
             {attractions.map((element, index)=>
                 <a href={element.properties.website}><h3 key={index}>{element.properties.name} - {element.properties.street}</h3></a>
             )}

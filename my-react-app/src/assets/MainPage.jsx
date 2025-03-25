@@ -43,6 +43,7 @@ function MainPage({travelData, setIsFormDisplayed,setIsMytravelsDisplayed}){
         <nav>
             <ul>
                 <li id="logo">LOGO</li>
+                <li>Kantor</li>
                 <li onClick={()=>{setIsMytravelsDisplayed(false),setIsFormDisplayed(false)}}>Strona Główna</li>
                 <li onClick={()=>{setIsMytravelsDisplayed(true),setIsFormDisplayed(false)}}>Moje podróże</li>
                 <li onClick={()=>{setIsFormDisplayed(true),setIsMytravelsDisplayed(false)}}>Dodaj nową podróż</li>
