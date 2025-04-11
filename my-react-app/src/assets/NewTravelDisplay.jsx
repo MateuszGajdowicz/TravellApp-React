@@ -23,6 +23,7 @@ function NewTravelDisplay({SendTravelData,setIsFormDisplayed, destinationValue, 
 
         }
         catch(error){
+            
 
         }
 

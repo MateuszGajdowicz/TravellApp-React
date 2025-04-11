@@ -7,7 +7,7 @@ import Plane from './images/plane.png'
 import './MainPage.css'
 import { use } from 'react';
 import WorldMap from './WorldMap.jsx';
-function MainPage({travelData, setIsFormDisplayed,setIsMytravelsDisplayed}){
+function MainPage({travelData, setIsFormDisplayed,setIsMytravelsDisplayed, setIsKantorDisplayed}){
     const API_Key = "BS9RzGusHHUDf9ccCSYWhUS-o6pUk1qBct0bczqdjEw";
     const [destinationList, setDestinationList] = useState(["Maroko", "Barcelona", "Moskwa"]);
     const [imageList, setImageList] = useState([NewYork,Warsaw,Barcelona]);
@@ -43,10 +43,10 @@ function MainPage({travelData, setIsFormDisplayed,setIsMytravelsDisplayed}){
         <nav>
             <ul>
                 <li id="logo">LOGO</li>
-                <li>Kantor</li>
-                <li onClick={()=>{setIsMytravelsDisplayed(false),setIsFormDisplayed(false)}}>Strona Główna</li>
-                <li onClick={()=>{setIsMytravelsDisplayed(true),setIsFormDisplayed(false)}}>Moje podróże</li>
-                <li onClick={()=>{setIsFormDisplayed(true),setIsMytravelsDisplayed(false)}}>Dodaj nową podróż</li>
+                <li onClick={()=>{setIsKantorDisplayed(true), setIsFormDisplayed(false), setIsMytravelsDisplayed(false)}}>Kantor</li>
+                <li onClick={()=>{setIsMytravelsDisplayed(false),setIsFormDisplayed(false),setIsKantorDisplayed(false)}}>Strona Główna</li>
+                <li onClick={()=>{setIsMytravelsDisplayed(true),setIsFormDisplayed(false),setIsKantorDisplayed(false)}}>Moje podróże</li>
+                <li onClick={()=>{setIsFormDisplayed(true),setIsMytravelsDisplayed(false),setIsKantorDisplayed(false)}}>Dodaj nową podróż</li>
                 <li>Profil</li>
             </ul>
         </nav>

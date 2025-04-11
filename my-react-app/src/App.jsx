@@ -12,18 +12,21 @@ function App() {
   const [travelData,setTravelData] = useState([]);
   const [isFormDisplayed, setIsFormDisplayed] = useState(false)
   const [isMyTravelsDisplayed, setIsMytravelsDisplayed] = useState(false);
+  const [isKantorDisplayed, setIsKantorDisplayed] = useState(false)
 
 
 
   return (
     <>
-    <MainPage setIsMytravelsDisplayed={setIsMytravelsDisplayed} setIsFormDisplayed = {setIsFormDisplayed} travelData={travelData}/>
+    <MainPage setIsKantorDisplayed = {setIsKantorDisplayed} setIsMytravelsDisplayed={setIsMytravelsDisplayed} setIsFormDisplayed = {setIsFormDisplayed} travelData={travelData}/>
     {isFormDisplayed && 
     <NewTravelInput setIsFormDisplayed={setIsFormDisplayed} setTravelData={setTravelData}/>}
     {isMyTravelsDisplayed &&
     <MyTravels travelData={travelData} setIsMytravelsDisplayed={setIsMytravelsDisplayed}/>}
-    <Kantor/>
+    {isKantorDisplayed&&
+        <Kantor/>
 
+    }
     </>
   )
 }

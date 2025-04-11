@@ -11,7 +11,7 @@ function Kantor(){
                                                 value:"",
                                                 name:""
                                                      });
-    const [outcome, setOutcome] = useState();
+    const [outcome, setOutcome] = useState(0);
 
 
 
@@ -58,11 +58,10 @@ function Kantor(){
         <div className="KantorContainer">
             <div className='FirstValueContainer'>
                 <h2>Jaką walutę chcesz przeliczyć?</h2>
-                <button onClick={()=>getCurrencies()}>PObierz</button>
-                <button onClick={()=>console.log(firstCurrency, secondCurrency)}>check</button>
+
                 <div>
-                    <input onChange={handleFirstCurrencyValue} type="number" />
-                    <select onChange={handleFirstCurrencyName} name="" id="">
+                    <input placeholder="Wprowadź wartość" onChange={handleFirstCurrencyValue} type="number" />
+                    <select onClick = {getCurrencies} onChange={handleFirstCurrencyName} name="" id="">
                         {currencies.map((element,index)=>(
 
                             <option key={index} value={element.currency}>{element.currency}</option>
@@ -82,7 +81,7 @@ function Kantor(){
                     </div>
                 </div>
                 <button onClick={CountCurrency}>Przelicz</button>
-                <h1>{outcome} {secondCurrency.name}</h1>
+                <h1>{outcome.toFixed(2)} {secondCurrency.name}</h1>
             </div>
 
 
